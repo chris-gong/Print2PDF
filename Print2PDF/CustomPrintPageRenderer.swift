@@ -26,8 +26,11 @@ class CustomPrintPageRenderer: UIPrintPageRenderer {
         
         // Set the horizontal and vertical insets (that's optional).
         // self.setValue(NSValue(CGRect: pageFrame), forKey: "printableRect")
-        self.setValue(NSValue(cgRect: pageFrame.insetBy(dx: 10.0, dy: 10.0)), forKey: "printableRect")
-        
+        // self.setValue(NSValue(cgRect: pageFrame.insetBy(dx: 10.0, dy: 10.0)), forKey: "printableRect")
+        // UIEdgeInsetsMake(top, left, bottom, right)
+        let insets = UIEdgeInsetsMake(10, 10, 50, 10)
+        let pageFrameWithInsets = UIEdgeInsetsInsetRect(pageFrame, insets)
+        self.setValue(NSValue(cgRect: pageFrameWithInsets), forKey: "printableRect")
         
         self.headerHeight = 50.0
         self.footerHeight = 50.0
